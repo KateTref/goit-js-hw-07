@@ -1,11 +1,6 @@
 import { galleryItems } from './gallery-items.js';
-// Change code below this line
-
-console.log(galleryItems);
-
 
 const galleryContainer = document.querySelector('.gallery');
-
 const picturesMarkup = createPicturesMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', picturesMarkup);
@@ -34,20 +29,16 @@ function onGalleryContainerClick(event) {
     event.preventDefault();
     
     const isPictureEl = event.target.classList.contains('gallery__image');
-   
+    const urlOriginalPicture = event.target.dataset.source;
 
     if (!isPictureEl) {
         return;
     };
     
-    const currentActivePicture = document.querySelector('img .is-active');
-    event.target.classList.add('is-active');
-   
-    // const bigPictureUrl = 
+    const instance = basicLightbox.create(`
+    <img src="${urlOriginalPicture}" width="1280" height="600">`);
+
+    instance.show();
     
     
-    galleryItems.forEach(elem => {
-        let originalUrl = elem.original;
-        console.log(originalUrl);
-    })
-}
+};
